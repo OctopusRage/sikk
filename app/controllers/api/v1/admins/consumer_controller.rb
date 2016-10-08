@@ -10,7 +10,7 @@ class Api::V1::Admins::ConsumersController < AdminController
 			data: {
 				total_data: total_data,
 				count: user.count,
-				personel: user
+				user: user
 			}
 		}, status: 200
 	end

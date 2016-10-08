@@ -10,6 +10,10 @@ class Laporan < ActiveRecord::Base
 
 	has_many :file_uploads, as: :uploader
 
+  scope :by_report_date, -> (starts,ends) {
+    where("created_at >= ? AND created_at <= ?",
+      starts,ends) }
+
   def load_village
     village = VillageClient.get_data(self.village_id)
     if !village.nil?
