@@ -7,7 +7,7 @@ class Api::V1::Admins::SessionsController < ApplicationController
     	render json: {
     		status: 'fail',
     		message: 'invalid username or password'
-    	}
+    	}, status: 422
     else
 	    if user.valid_password? password
 	      sign_in user, store: false
