@@ -3,6 +3,7 @@ class Api::V1::Consultants::ReportsController < ApplicationController
 	def index
 		village_id = current_consultant.area_id
 		laporan = Laporan.where(village_id: village_id)
+		laporan = current_consultant.laporans if params[:my_reports]
 		render json: {
 			status: 'success',
 			data: laporan

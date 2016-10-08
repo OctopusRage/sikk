@@ -29,7 +29,7 @@ Rails.application.routes.draw do
         end
         namespace :consumers do
           resources :sessions, only: [:create]
-          resources :reports, only: [:index, :create]
+          resources :reports, only: [:index, :create, :update]
         end
         namespace :consultants do
           resources :reports, only: [:index, :update]
