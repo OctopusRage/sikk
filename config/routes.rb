@@ -23,6 +23,8 @@ Rails.application.routes.draw do
         namespace :admins do
           resources :sessions, only: [:create]
           resources :reports, only: [:index]
+          resources :consultants, only: [:index]
+          resources :consumers, only: [:index]
         end
         namespace :consumers do
           resources :sessions, only: [:create]
