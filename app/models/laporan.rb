@@ -42,7 +42,9 @@ class Laporan < ActiveRecord::Base
       kecamatan: kecamatan,
       province: province,
       process: process,
-      verified_by: verified_by
+      verified_by: verified_by,
+      report_category_id: report_category_id,
+      report_category: report_category.category
     }
   end
 end
