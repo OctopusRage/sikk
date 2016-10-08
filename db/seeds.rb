@@ -14,7 +14,7 @@ ReportCategory.create([
 ])
 
 Admin.create([
-	{mail:"admin@mail.com", password:"password"}
+	{email:"admin@mail.com", password:"password"}
 ])
 
 Consultant.create([
