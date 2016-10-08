@@ -85,22 +85,24 @@ ActiveRecord::Schema.define(version: 20161008175659) do
   add_index "consumers", ["email"], name: "index_consumers_on_email", unique: true
   add_index "consumers", ["reset_password_token"], name: "index_consumers_on_reset_password_token", unique: true
 
+# Could not dump table "file_uploads" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
+
   create_table "laporans", force: :cascade do |t|
     t.integer  "consumer_id"
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "village_id"
     t.boolean  "to_consumer"
-    t.integer  "process"
+    t.integer  "process",            default: 0
     t.boolean  "verified"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.text     "title"
     t.string   "content"
     t.text     "additional_info"
     t.integer  "report_category_id"
     t.integer  "verified_by"
-    t.integer  "progress"
   end
 
   create_table "report_categories", force: :cascade do |t|
