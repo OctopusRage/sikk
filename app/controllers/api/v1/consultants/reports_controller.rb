@@ -1,7 +1,7 @@
-class Api::V1::Consumers::ReportsController < ApplicationController
+class Api::V1::Consultants::ReportsController < ApplicationController
 	before_action :authorize_user
 	def index
-		village_id = current_consumer.area_id
+		village_id = current_consultant.area_id
 		laporan = Laporan.where(village_id: village_id)
 		render json: {
 			status: 'success',
@@ -10,7 +10,7 @@ class Api::V1::Consumers::ReportsController < ApplicationController
 	end
 
 	def update
-		laporan = current_consumer.laporans.find(params[:id])
+		laporan = current_consultant.laporans.find(params[:id])
 		if laporan.present?
 			laporan.update(report_params)
 			render json: {
