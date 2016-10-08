@@ -30,6 +30,7 @@ class Laporan < ActiveRecord::Base
     kecamatan = village["kecamatan"] if !village.nil?
     province = village["propinsi"] if !village.nil?
     {
+      id: id,
       consumer_id: consumer_id,
       title: title,
       content: content,
