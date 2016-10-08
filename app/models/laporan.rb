@@ -8,7 +8,6 @@ class Laporan < ActiveRecord::Base
 	belongs_to :consumer
 
 	has_many :file_uploads, as: :uploader
-	has_many :report_categories
 
   def load_village
     village = VillageClient.get_data(self.village_id)
