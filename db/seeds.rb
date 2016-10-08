@@ -13,6 +13,9 @@ ReportCategory.create([
 	{category: "Kriminal"}
 ])
 
+Admin.create([
+	{mail:"admin@mail.com", password:"password"}
+])
 
 Consultant.create([
 	{fullname:"babinsa1", email:"babinsa1@mail.com", password:"babinsa", area_id: 1},
