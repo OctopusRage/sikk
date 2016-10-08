@@ -21,10 +21,15 @@ class Api::V1::Admins::ReportsController < AdminController
 		categories = ReportCategory.joins(
 			"INNER JOIN laporans ON laporans.report_category_id = report_categories.id"
 		).group(:category).count
+		total = 0
+		categories.each do |x|
+			total += x[1]
+		end
 		render json: {
 			status: 'success',
 			data: {
 				stats: categories
+				total: total
 			}
 		}, status: 200
 	end
