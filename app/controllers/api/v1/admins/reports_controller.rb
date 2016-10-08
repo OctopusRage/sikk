@@ -1,4 +1,4 @@
-class Api::V1::Consumers::ReportsController < AdminController
+class Api::V1::Admins::ReportsController < AdminController
 	before_action :authorize_admin
 	def index
 		laporan = Laporan.all
