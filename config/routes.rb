@@ -19,11 +19,14 @@ Rails.application.routes.draw do
   namespace :api, path: '/', constraints: subdomain_constraint do
     scope defaults: { format: 'json' } do
       scope module: :v1, constraints: ApiVersion.new('v1', true) do
+        resource :auth, only: [:create], controller: :auth
         namespace :admins do
           resources :sessions, only: [:create]
+          resources :reports, only: [:index]
         end
         namespace :consumers do
           resources :sessions, only: [:create]
+          resources :reports, only: [:index, :create]
         end
       end
     end

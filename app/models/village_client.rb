@@ -22,10 +22,21 @@ class VillageClient
 			header = {
         "Authorization" => "Bearer #{token}"
       }
-      body = {
-      	"id"=>79854
+			response = HTTParty.get("#{BASE_URL}/api/v1/desa?id=#{id}", headers:header)
+			response_body = JSON.parse(response.body)
+			JSON.parse(response.body) if !response.body.empty?
+		else
+			nil
+		end
+	end
+
+	def self.get_data_by_province(prop=nil)
+		token = login
+		if !token.nil?
+			header = {
+        "Authorization" => "Bearer #{token}"
       }
-			response = HTTParty.get("#{BASE_URL}/api/v1/desa?id=#{id}",body:body.to_json, headers:header)
+			response = HTTParty.get("#{BASE_URL}/api/v1/desa?propinsi=#{prop}", headers:header)
 			response_body = JSON.parse(response.body)
 			JSON.parse(response.body) if !response.body.empty?
 		else

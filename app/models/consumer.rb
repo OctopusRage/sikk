@@ -5,6 +5,10 @@ class Consumer < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   before_create :set_auth_token
 
+  validates :email, presence: true
+
+  has_many :laporans
+  
 	def set_auth_token
     self.authentication_token = loop do
       token = SecureRandom.urlsafe_base64

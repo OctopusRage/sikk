@@ -5,12 +5,16 @@ class Consultant < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   before_create :set_auth_token
 
+  validates :email, presence: true
+
+  has_many :laporans, foreign_key: "consultant_id", class_name: "Laporan"
+
 	def set_auth_token
     self.authentication_token = loop do
       token = SecureRandom.urlsafe_base64
       break token unless self.class.exists?(authentication_token: token)
     end unless authentication_token
-  end 
+  end
   def load_village
     village = VillageClient.get_data(self.area_id)
     if !village.nil?

@@ -5,3 +5,25 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+ReportCategory.create([
+	{category: "Bencana"},
+	{category: "Kegiatan Sosial"},
+	{category: "Terorisme"},
+	{category: "Kriminal"}
+])
+
+
+Consultant.create([
+	{fullname:"babinsa1", email:"babinsa1@mail.com", password:"babinsa", area_id: 45677},
+	{fullname:"babinsa2", email:"babinsa2@mail.com", password:"babinsa", area_id: 45676},
+	{fullname:"babinsa3", email:"babinsa3@mail.com", password:"babinsa", area_id: 45677},
+	{fullname:"babinsa4", email:"babinsa4@mail.com", password:"babinsa", area_id: 45672}
+])
+
+Consumer.create([
+	{fullname:"RT1", email:"babinsa1@mail.com", password:"babinsa", area_id: 45677},
+	{fullname:"babinsa2", email:"babinsa2@mail.com", password:"babinsa", area_id: 45676},
+	{fullname:"babinsa3", email:"babinsa3@mail.com", password:"babinsa", area_id: 45677},
+	{fullname:"babinsa4", email:"babinsa4@mail.com", password:"babinsa", area_id: 45672}
+])

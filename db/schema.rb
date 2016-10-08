@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161008050109) do
+ActiveRecord::Schema.define(version: 20161008141316) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 20161008050109) do
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+
+  create_table "civil_roles", force: :cascade do |t|
+    t.string   "role_name"
+    t.string   "desc"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "consultants", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -70,13 +77,16 @@ ActiveRecord::Schema.define(version: 20161008050109) do
     t.datetime "updated_at",                          null: false
     t.string   "fullname"
     t.integer  "area_id"
-    t.integer  "civil_role"
+    t.integer  "civil_role_id"
     t.string   "username"
     t.string   "authentication_token"
   end
 
   add_index "consumers", ["email"], name: "index_consumers_on_email", unique: true
   add_index "consumers", ["reset_password_token"], name: "index_consumers_on_reset_password_token", unique: true
+
+# Could not dump table "file_uploads" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "laporans", force: :cascade do |t|
     t.integer  "consumer_id"
@@ -86,8 +96,14 @@ ActiveRecord::Schema.define(version: 20161008050109) do
     t.boolean  "to_consumer"
     t.integer  "process"
     t.boolean  "verified"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.text     "title"
+    t.string   "content"
+    t.text     "additional_info"
+    t.integer  "report_category_id"
+    t.integer  "verified_by"
+    t.integer  "progress"
   end
 
   create_table "report_categories", force: :cascade do |t|
