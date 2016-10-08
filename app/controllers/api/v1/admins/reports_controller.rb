@@ -5,6 +5,7 @@ class Api::V1::Admins::ReportsController < AdminController
 		total_data = laporan.count
 		laporan = laporan.page(params[:page]) if params[:page]
 		laporan = laporan.report_categories.where(id: params[:id_category]) if params[:id_category]
+		laporan = laporan.where(village_id: params[:village_id]) if params[:village_id]
 		render json: {
 			status: 'success',
 			data: {
