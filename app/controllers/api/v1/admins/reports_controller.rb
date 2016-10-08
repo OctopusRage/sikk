@@ -28,7 +28,7 @@ class Api::V1::Admins::ReportsController < AdminController
 		render json: {
 			status: 'success',
 			data: {
-				stats: categories
+				stats: categories,
 				total: total
 			}
 		}, status: 200
