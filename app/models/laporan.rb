@@ -22,6 +22,24 @@ class Laporan < ActiveRecord::Base
     end
   end
 
+  def as_simple_json
+    {
+      id: id,
+      consumer_id: consumer_id,
+      title: title,
+      content: content,
+      additional_info: additional_info,
+      latitude: latitude, 
+      longitude: longitude,
+      kecamatan: kecamatan,
+      province: province,
+      process: process,
+      verified_by: verified_by,
+      report_category_id: report_category_id,
+      report_category: report_category.category
+    }
+  end
+
 	def as_json(options={})
     village = load_village
     village_name = village["kelurahan_desa"] if !village.nil?

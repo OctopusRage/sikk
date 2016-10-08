@@ -15,5 +15,17 @@ class Api::V1::Admins::ReportsController < AdminController
 			}
 		}, status: 200
 	end
+
+	def category_graph
+		categories = ReportCategory.joins(
+			"INNER JOIN laporans ON laporans.report_category_id = report_categories.id"
+		).group(:category).count
+		render json: {
+			status: 'success',
+			data: {
+				stats: categories
+			}
+		}, status: 200
+	end
 end
 		

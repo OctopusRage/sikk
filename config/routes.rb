@@ -25,6 +25,7 @@ Rails.application.routes.draw do
           resources :reports, only: [:index]
           resources :consultants, only: [:index]
           resources :consumers, only: [:index]
+          post "category_graph" => "reports#category_graph"
         end
         namespace :consumers do
           resources :sessions, only: [:create]

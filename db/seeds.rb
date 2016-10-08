@@ -27,3 +27,10 @@ Consumer.create([
 	{fullname:"babinsa3", email:"babinsa3@mail.com", password:"babinsa", area_id: 45677},
 	{fullname:"babinsa4", email:"babinsa4@mail.com", password:"babinsa", area_id: 45672}
 ])
+
+village = VillageClient.get_data_by_province('JAWA TIMUR')
+village["desa"].each do |vil|
+	Village.create(
+		kd_prop: vil['kd_prop'],
+	)
+end

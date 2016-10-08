@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kd_prop: 1
+  kd_kab: 1
+  kd_kec: 1
+  kd_desa: 1
+  propinsi: MyString
+  kabupaten_kota: MyString
+  kecamatan: MyString
+  kelurahan_desa: MyString
+
+two:
+  kd_prop: 1
+  kd_kab: 1
+  kd_kec: 1
+  kd_desa: 1
+  propinsi: MyString
+  kabupaten_kota: MyString
+  kecamatan: MyString
+  kelurahan_desa: MyString

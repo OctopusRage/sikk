@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161008141316) do
+ActiveRecord::Schema.define(version: 20161008175659) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -85,9 +85,6 @@ ActiveRecord::Schema.define(version: 20161008141316) do
   add_index "consumers", ["email"], name: "index_consumers_on_email", unique: true
   add_index "consumers", ["reset_password_token"], name: "index_consumers_on_reset_password_token", unique: true
 
-# Could not dump table "file_uploads" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
-
   create_table "laporans", force: :cascade do |t|
     t.integer  "consumer_id"
     t.float    "latitude"
@@ -110,6 +107,19 @@ ActiveRecord::Schema.define(version: 20161008141316) do
     t.string   "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "villages", force: :cascade do |t|
+    t.integer  "kd_prop"
+    t.integer  "kd_kab"
+    t.integer  "kd_kec"
+    t.integer  "kd_desa"
+    t.string   "propinsi"
+    t.string   "kabupaten_kota"
+    t.string   "kecamatan"
+    t.string   "kelurahan_desa"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
 end
