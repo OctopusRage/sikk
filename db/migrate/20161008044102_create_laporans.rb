@@ -6,7 +6,7 @@ class CreateLaporans < ActiveRecord::Migration
       t.float :longitude
       t.integer :village_id
       t.boolean :to_consumer
-      t.integer :process
+      t.integer :process, default: 0
       t.boolean :verified
 
       t.timestamps null: false
