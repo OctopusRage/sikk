@@ -8,6 +8,7 @@ class Consumer < ActiveRecord::Base
   validates :email, presence: true
 
   has_many :laporans
+  belongs_to :village
   
 	def set_auth_token
     self.authentication_token = loop do
@@ -48,11 +49,6 @@ class Consumer < ActiveRecord::Base
   end
 
   def as_json(options={})
-    village = load_village
-    village_name = village["kelurahan_desa"] if !village.nil?
-    city = village["kabupaten_kota"] if !village.nil?
-    kecamatan = village["kecamatan"] if !village.nil?
-    province = village["propinsi"] if !village.nil?
     {
       fullname: fullname,
       email: email,
@@ -60,7 +56,7 @@ class Consumer < ActiveRecord::Base
       province: province,
       city: city,
       kecamatan: kecamatan,
-      village: village_name
+      village_id: village_name
     }
   end
 

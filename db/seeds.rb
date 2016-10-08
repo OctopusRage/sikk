@@ -32,5 +32,12 @@ village = VillageClient.get_data_by_province('JAWA TIMUR')
 village["desa"].each do |vil|
 	Village.create(
 		kd_prop: vil['kd_prop'],
+		kd_kab: vil['kd_kab'],
+		kd_kec: vil['kd_kec'],
+		kd_desa: vil['kd_desa'],
+		propinsi: vil['propinsi'],
+		kabupaten_kota: vil['kabupaten_kota'],
+		kecamatan: vil['kecamatan'],
+		kelurahan_desa: vil['kelurahan_desa']
 	)
 end

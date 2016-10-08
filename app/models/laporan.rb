@@ -6,6 +6,7 @@ class Laporan < ActiveRecord::Base
 	belongs_to :report_category
 	belongs_to :consultant, class_name: 'Consultant', foreign_key: 'laporan'
 	belongs_to :consumer
+  belongs_to :village
 
 	has_many :file_uploads, as: :uploader
 
@@ -31,8 +32,11 @@ class Laporan < ActiveRecord::Base
       additional_info: additional_info,
       latitude: latitude, 
       longitude: longitude,
-      kecamatan: kecamatan,
-      province: province,
+      village_id: village_id,
+      village_name: self.village.kelurahan_desa,
+      city: self.village.kabupaten_kota,
+      kecamatan: self.village.kecamatan,
+      province: self.village.propinsi,
       process: process,
       verified_by: verified_by,
       report_category_id: report_category_id,
@@ -41,11 +45,6 @@ class Laporan < ActiveRecord::Base
   end
 
 	def as_json(options={})
-    village = load_village
-    village_name = village["kelurahan_desa"] if !village.nil?
-    city = village["kabupaten_kota"] if !village.nil?
-    kecamatan = village["kecamatan"] if !village.nil?
-    province = village["propinsi"] if !village.nil?
     {
       id: id,
       consumer_id: consumer_id,
@@ -55,10 +54,10 @@ class Laporan < ActiveRecord::Base
       latitude: latitude, 
       longitude: longitude,
       village_id: village_id,
-      village_name: village_name,
-      city: city,
-      kecamatan: kecamatan,
-      province: province,
+      village_name: self.village.kelurahan_desa,
+      city: self.village.kabupaten_kota,
+      kecamatan: self.village.kecamatan,
+      province: self.village.propinsi,
       process: process,
       verified_by: verified_by,
       report_category_id: report_category_id,

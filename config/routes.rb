@@ -31,6 +31,9 @@ Rails.application.routes.draw do
           resources :sessions, only: [:create]
           resources :reports, only: [:index, :create]
         end
+        namespace :consultants do
+          resources :reports, only: [:index, :update]
+        end
       end
     end
   end 

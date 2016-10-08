@@ -9,20 +9,6 @@ class Api::V1::Consumers::ReportsController < ApplicationController
 		}, status: 200
 	end
 
-	def create
-		laporan = current_consumer.laporans.new(report_params)
-		if laporan.save
-			render json: {
-				status: 'success',
-				data: laporan
-			}, status: 201
-		else
-			render json: {
-				status: 'fail',
-				message: "#{laporan.errors.full_messages.first}"
-			}, status: 422
-		end
-	end	
 	def update
 		laporan = current_consumer.laporans.find(params[:id])
 		if laporan.present?
