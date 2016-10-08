@@ -11,7 +11,7 @@ class Laporan < ActiveRecord::Base
 	has_many :report_categories
 
   def load_village
-    village = VillageClient.get_data(self.area_id)
+    village = VillageClient.get_data(self.village_id)
     if !village.nil?
       if village["count"]["total"] == 1
         village["desa"][0]
