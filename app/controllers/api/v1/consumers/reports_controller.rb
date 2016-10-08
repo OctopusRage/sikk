@@ -18,7 +18,7 @@ class Api::V1::Consumers::ReportsController < ApplicationController
 			else
 				render json: {
 					status: 'fail',
-					message: 'failed to post'
+					message: "#{laporan.errors}"
 				}, status: 422
 			end
 		else
