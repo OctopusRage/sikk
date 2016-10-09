@@ -9,6 +9,7 @@ class Consultant < ActiveRecord::Base
 
   has_many :laporans, foreign_key: "consultant_id", class_name: "Laporan"
 
+  belongs_to :village
 	def set_auth_token
     self.authentication_token = loop do
       token = SecureRandom.urlsafe_base64
@@ -16,7 +17,7 @@ class Consultant < ActiveRecord::Base
     end unless authentication_token
   end
   def load_village
-    village = VillageClient.get_data(self.area_id)
+    village = VillageClient.get_data(self.village_id)
     if !village.nil?
       if village["count"]["total"] == 1
         village["desa"][0]
@@ -29,37 +30,28 @@ class Consultant < ActiveRecord::Base
   end
 
   def as_credential
-    village = load_village
-    village_name = village["kelurahan_desa"] if !village.nil?
-    city = village["kabupaten_kota"] if !village.nil?
-    kecamatan = village["kecamatan"] if !village.nil?
-    province = village["propinsi"] if !village.nil?
     {
       fullname: fullname,
       email: email,
-      area_id: area_id,
-      province: province,
-      city: city,
-      kecamatan: kecamatan,
-      village: village_name,
+      village_id: village_id,
+      village_name: self.village.kelurahan_desa,
+      city: self.village.kabupaten_kota,
+      kecamatan: self.village.kecamatan,
+      province: self.village.propinsi,
       authentication_token: authentication_token
     }
   end
 
   def as_json(options={})
-    village = load_village
-    village_name = village["kelurahan_desa"] if !village.nil?
-    city = village["kabupaten_kota"] if !village.nil?
-    kecamatan = village["kecamatan"] if !village.nil?
-    province = village["propinsi"] if !village.nil?
+    
     {
       fullname: fullname,
       email: email,
-      area_id: area_id,
-      province: province,
-      city: city,
-      kecamatan: kecamatan,
-      village: village_name
+      village_id: village_id,
+      village_name: self.village.kelurahan_desa,
+      city: self.village.kabupaten_kota,
+      kecamatan: self.village.kecamatan,
+      province: self.village.propinsi,
     }
   end
 end

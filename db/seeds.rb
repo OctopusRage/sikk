@@ -18,17 +18,17 @@ Admin.create([
 ])
 
 Consultant.create([
-	{fullname:"babinsa1", email:"babinsa1@mail.com", password:"babinsa", area_id: 1},
-	{fullname:"babinsa2", email:"babinsa2@mail.com", password:"babinsa", area_id: 3},
-	{fullname:"babinsa3", email:"babinsa3@mail.com", password:"babinsa", area_id: 5},
-	{fullname:"babinsa4", email:"babinsa4@mail.com", password:"babinsa", area_id: 1}
+	{fullname:"babinsa1", email:"babinsa1@mail.com", password:"babinsa", village_id: 1},
+	{fullname:"babinsa2", email:"babinsa2@mail.com", password:"babinsa", village_id: 3},
+	{fullname:"babinsa3", email:"babinsa3@mail.com", password:"babinsa", village_id: 5},
+	{fullname:"babinsa4", email:"babinsa4@mail.com", password:"babinsa", village_id: 1}
 ])
 
 Consumer.create([
-	{fullname:"RT1", email:"masyarakat1@mail.com", password:"babinsa", area_id: 1},
-	{fullname:"RT2", email:"masyarakat2@mail.com", password:"babinsa", area_id: 3},
-	{fullname:"RT3", email:"masyarakat3@mail.com", password:"babinsa", area_id: 5},
-	{fullname:"RT4", email:"masyarakat4@mail.com", password:"babinsa", area_id: 1}
+	{fullname:"RT1", email:"masyarakat1@mail.com", password:"babinsa", village_id: 1},
+	{fullname:"RT2", email:"masyarakat2@mail.com", password:"babinsa", village_id: 3},
+	{fullname:"RT3", email:"masyarakat3@mail.com", password:"babinsa", village_id: 5},
+	{fullname:"RT4", email:"masyarakat4@mail.com", password:"babinsa", village_id: 1}
 ])
 
 village = VillageClient.get_data_by_province('JAWA TIMUR')

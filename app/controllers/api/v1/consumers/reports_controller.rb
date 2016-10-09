@@ -42,7 +42,7 @@ class Api::V1::Consumers::ReportsController < ApplicationController
 	private
 		def report_params
 			params.require(:laporan).permit(:consumer_id, :title, :village_id, :latitude, :longitude, 
-				:process, :verified_by, :content, :additional_info, :report_category_id)
+				 :content, :additional_info, :report_category_id)
 		end
 end
 		
