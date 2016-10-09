@@ -65,7 +65,8 @@ class Laporan < ActiveRecord::Base
       process: process,
       verified_by: verified_by,
       report_category_id: report_category_id,
-      report_category: report_category.category
+      report_category: report_category.category,
+      created_at: created_at
     }
   end
 end
