@@ -1,7 +1,7 @@
 class Api::V1::Consultants::ReportsController < ApplicationController
 	before_action :authorize_user
 	def index
-		village_id = current_consultant.area_id
+		village_id = current_consultant.village_id
 		laporan = Laporan.where(village_id: village_id)
 		laporan = current_consultant.laporans if params[:my_reports]
 		render json: {
